@@ -20,6 +20,11 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
+.exp-tracker-container {
+  display: flex;
+  gap: 50px;
+}
+
 .container {
   margin: 30px auto;
   width: 350px;
@@ -36,12 +41,16 @@ h2 {
 h3 {
   border-bottom: 1px solid #bbb;
   padding-bottom: 10px;
-  margin: 40px 0 10px;
+  margin: 0 0 10px;
 }
 
 h4 {
   margin: 0;
   text-transform: uppercase;
+}
+
+a {
+  text-decoration: none;
 }
 
 .box-container {
@@ -85,6 +94,21 @@ h4 {
 
 .month {
   text-align: center;
+}
+
+.button {
+  padding: 10px 20px;
+  font-size: 1.1rem;
+  transition: 0.5s;
+}
+
+.button:hover {
+  background-color: rgb(227, 227, 227);
+  cursor: pointer;
+}
+
+.icon {
+  font-size: 30px;
 }
 
 label {

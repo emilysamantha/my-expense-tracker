@@ -4,7 +4,6 @@ import { numberWithCommas } from "../utils/format";
 const IncomeExpenses = () => {
   return (
     <div>
-      <br />
       <h4 className="month">January</h4>
       <div className="box-container inc-exp">
         <div>
