@@ -1,8 +1,10 @@
 import React, { useState, useContext } from "react";
-// import { GlobalContext } from "../context/GlobalState";
+import { GlobalContext } from "../context/GlobalState";
 import { v4 as uuidv4 } from "uuid";
 
 const AddTransaction = () => {
+  const { addTransaction } = useContext(GlobalContext);
+
   // Hooks
   const [text, setText] = useState("");
   const [category, setCategory] = useState("");
@@ -10,7 +12,12 @@ const AddTransaction = () => {
   const [showForm, setShowForm] = useState(false);
 
   // Set functions
-  const toggleForm = () => setShowForm(!showForm);
+  const toggleForm = () => {
+    setShowForm(!showForm);
+    setText("");
+    setCategory("");
+    setAmount();
+  };
 
   // const { addTransaction } = useContext(GlobalContext);
   const onSubmit = (e) => {
@@ -23,7 +30,8 @@ const AddTransaction = () => {
       amount: +amount,
     };
 
-    // addTransaction(newTransaction);
+    addTransaction(newTransaction);
+    toggleForm();
   };
 
   return (
@@ -72,9 +80,7 @@ const AddTransaction = () => {
               placeholder="Enter amount"
             />
           </div>
-          <button onClick={toggleForm} className="btn">
-            Add transaction
-          </button>
+          <button className="btn">Add transaction</button>
 
           <p onClick={toggleForm}>Cancel</p>
         </form>

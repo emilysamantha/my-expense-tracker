@@ -6,10 +6,11 @@ import TodaysExpenses from "./components/TodaysExpenses";
 import Button from "./components/Button";
 import TransactionList from "./components/TransactionList";
 import AddTransaction from "./components/AddTransaction";
+import { GlobalProvider } from "./context/GlobalState";
 
 function App() {
   return (
-    <div>
+    <GlobalProvider>
       <Header title="Expense Tracker" />
       <div className="exp-tracker-container">
         <div className="container">
@@ -27,7 +28,7 @@ function App() {
           <AddTransaction />
         </div>
       </div>
-    </div>
+    </GlobalProvider>
   );
 }
 
