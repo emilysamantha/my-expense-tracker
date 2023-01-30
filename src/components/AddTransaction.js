@@ -1,9 +1,70 @@
-import React from "react";
+import React, { useState, useContext } from "react";
+// import { GlobalContext } from "../context/GlobalState";
+import { v4 as uuidv4 } from "uuid";
 
 const AddTransaction = () => {
+  // Hooks
+  const [text, setText] = useState("");
+  const [amount, setAmount] = useState();
+  const [showForm, setShowForm] = useState(false);
+
+  // Set functions
+  const toggleForm = () => setShowForm(!showForm);
+
+  // const { addTransaction } = useContext(GlobalContext);
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    const newTransaction = {
+      id: uuidv4(),
+      text,
+      amount: +amount,
+    };
+
+    // addTransaction(newTransaction);
+  };
+
   return (
     <div>
-      <div className="box-container"></div>
+      {!showForm && (
+        <div onClick={toggleForm} className="box-container button">
+          <i class="fa-solid fa-plus icon"></i>
+          <p>Add New Transaction</p>
+        </div>
+      )}
+
+      {showForm && (
+        <form onSubmit={onSubmit}>
+          <h3>Add New Transaction</h3>
+          <div className="form-control">
+            <label htmlFor="text">
+              <b>Title</b>
+            </label>
+            <input
+              type="text"
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+              placeholder="Enter title"
+            />
+            <div className="form-control">
+              <label htmlFor="amount">
+                <b>Amount</b> <br />
+                (negative for expense, positive for income)
+              </label>
+              <input
+                type="number"
+                value={amount}
+                onChange={(e) => setAmount(e.target.value)}
+                placeholder="Enter amount"
+              />
+            </div>
+            <button onClick={toggleForm} className="btn">
+              Add transaction
+            </button>
+          </div>
+          <p onClick={toggleForm}>Cancel</p>
+        </form>
+      )}
     </div>
   );
 };

@@ -60,7 +60,7 @@ a {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin-top: 10px;
+  /* margin-top: 10px; */
   margin-bottom: 20px;
   border-radius: 5px;
 }
@@ -97,7 +97,7 @@ a {
 }
 
 .button {
-  padding: 10px 20px;
+  padding: 5px 30px;
   font-size: 1.1rem;
   transition: 0.5s;
 }
@@ -119,7 +119,7 @@ label {
 input[type="text"],
 input[type="number"] {
   border: 1px solid #dedede;
-  border-radius: 2px;
+  border-radius: 5px;
   display: block;
   font-size: 16px;
   padding: 10px;
@@ -134,14 +134,31 @@ input[type="number"] {
   border: 0;
   display: block;
   font-size: 16px;
-  margin: 10px 0 30px;
+  margin: 20px 0 10px;
   padding: 10px;
   width: 100%;
+  border-radius: 5px;
+  transition: 0.5s;
+}
+
+.btn:hover {
+  background-color: #7c68e0;
 }
 
 .btn:focus,
 .delete-btn:focus {
   outline: 0;
+}
+
+form > p {
+  margin-top: 0;
+  text-align: center;
+  color: gray;
+  transition: 0.5s;
+}
+
+form > p:hover {
+  cursor: pointer;
 }
 
 .list {

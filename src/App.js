@@ -24,6 +24,7 @@ function App() {
         </div>
         <div className="container">
           <AddTransaction />
+          <br />
           <TransactionList />
         </div>
       </div>
