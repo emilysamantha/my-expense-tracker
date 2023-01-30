@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 const AddTransaction = () => {
   // Hooks
   const [text, setText] = useState("");
+  const [category, setCategory] = useState("");
   const [amount, setAmount] = useState();
   const [showForm, setShowForm] = useState(false);
 
@@ -17,7 +18,8 @@ const AddTransaction = () => {
 
     const newTransaction = {
       id: uuidv4(),
-      text,
+      text: text,
+      category: category,
       amount: +amount,
     };
 
@@ -46,22 +48,34 @@ const AddTransaction = () => {
               onChange={(e) => setText(e.target.value)}
               placeholder="Enter title"
             />
-            <div className="form-control">
-              <label htmlFor="amount">
-                <b>Amount</b> <br />
-                (negative for expense, positive for income)
-              </label>
-              <input
-                type="number"
-                value={amount}
-                onChange={(e) => setAmount(e.target.value)}
-                placeholder="Enter amount"
-              />
-            </div>
-            <button onClick={toggleForm} className="btn">
-              Add transaction
-            </button>
           </div>
+          <div className="form-control">
+            <label htmlFor="category">
+              <b>Category</b>
+            </label>
+            <input
+              type="text"
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+              placeholder="Enter category"
+            />
+          </div>
+          <div className="form-control">
+            <label htmlFor="amount">
+              <b>Amount</b> <br />
+              (negative for expense, positive for income)
+            </label>
+            <input
+              type="number"
+              value={amount}
+              onChange={(e) => setAmount(e.target.value)}
+              placeholder="Enter amount"
+            />
+          </div>
+          <button onClick={toggleForm} className="btn">
+            Add transaction
+          </button>
+
           <p onClick={toggleForm}>Cancel</p>
         </form>
       )}

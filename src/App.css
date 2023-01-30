@@ -142,7 +142,7 @@ input[type="number"] {
 }
 
 .btn:hover {
-  background-color: #7c68e0;
+  background-color: #ad9dff;
 }
 
 .btn:focus,
@@ -171,8 +171,6 @@ form > p:hover {
   background-color: #fff;
   box-shadow: var(--box-shadow);
   color: #333;
-  display: flex;
-  justify-content: space-between;
   position: relative;
   padding: 12px;
   margin: 10px 0;
@@ -184,6 +182,19 @@ form > p:hover {
 
 .list li.minus {
   border-right: 8px solid #c0392b;
+}
+
+.transaction-title {
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+}
+
+.category {
+  margin: 0;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  color: gray;
 }
 
 .delete-btn {
