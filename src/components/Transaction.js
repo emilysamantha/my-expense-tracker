@@ -10,7 +10,7 @@ const Transaction = ({ transaction }) => {
     <li className={transaction.amount < 0 ? "minus" : "plus"}>
       <div className="transaction-title">
         {transaction.text}{" "}
-        <span>
+        <span className={transaction.amount < 0 ? "minus" : "plus"}>
           {sign}${numberWithCommas(Math.abs(transaction.amount))}
         </span>
       </div>

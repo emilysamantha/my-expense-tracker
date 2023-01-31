@@ -24,8 +24,9 @@ function App() {
           <Button icon="fa-solid fa-money-bills" title="View Expense Summary" />
         </div>
         <div className="container">
-          <TransactionList />
           <AddTransaction />
+          <br />
+          <TransactionList />
         </div>
       </div>
     </GlobalProvider>

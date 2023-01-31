@@ -45,8 +45,13 @@ h3 {
 }
 
 h4 {
-  margin: 0;
+  margin: 5px 0;
   text-transform: uppercase;
+}
+
+h5 {
+  border-bottom: 1px solid #bbb;
+  padding-bottom: 5px;
 }
 
 a {
@@ -84,11 +89,11 @@ a {
   margin: 5px 0;
 }
 
-.money.plus {
+.plus {
   color: #2ecc71;
 }
 
-.money.minus {
+.minus {
   color: #c0392b;
 }
 
@@ -189,6 +194,7 @@ form > p:hover {
   font-weight: 600;
   display: flex;
   justify-content: space-between;
+  text-transform: capitalize;
 }
 
 .category {

@@ -28,7 +28,10 @@ const AddTransaction = () => {
       text: text,
       category: category,
       amount: +amount,
+      date: new Date(),
     };
+
+    console.log(newTransaction.date);
 
     addTransaction(newTransaction);
     toggleForm();
