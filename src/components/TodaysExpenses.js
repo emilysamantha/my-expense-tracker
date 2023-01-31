@@ -4,10 +4,26 @@ import { numberWithCommas } from "../utils/format";
 
 const TodaysExpenses = () => {
   const { transactions } = useContext(GlobalContext);
-  const amounts = transactions.map((transaction) => transaction.amount);
+
+  const todayAmounts = [];
+  const currentDate = new Date();
+
+  for (let i = 0; i < transactions.length; i++) {
+    if (
+      transactions[i].date.toDateString() === currentDate.toDateString() &&
+      transactions[i].amount < 0
+    ) {
+      todayAmounts.push(transactions[i].amount);
+    } else if (
+      transactions[i].date.toDateString() !== currentDate.toDateString()
+    ) {
+      break;
+    }
+  }
+
   const todaysExpenses = (
-    amounts
-      .filter((amount) => amount < 0)
+    todayAmounts
+      .filter((amount) => amount)
       .reduce((acc, amount) => (acc += parseFloat(amount)), 0) * -1
   ).toFixed(2);
 
