@@ -7,7 +7,7 @@ const currentDate = new Date();
 const yesterdayDate = new Date();
 yesterdayDate.setDate(currentDate.getDate() - 1);
 const olderDate = new Date();
-olderDate.setDate(currentDate.getDate() - 2);
+olderDate.setDate(currentDate.getDate() - 40);
 
 const initialState = {
   transactions: [
