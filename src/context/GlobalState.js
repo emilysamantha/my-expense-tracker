@@ -3,10 +3,49 @@ import AppReducer from "./AppReducer";
 // import axios from "axios";
 
 // Initial state
+const currentDate = new Date();
+const yesterdayDate = new Date();
+yesterdayDate.setDate(currentDate.getDate() - 1);
+const olderDate = new Date();
+olderDate.setDate(currentDate.getDate() - 2);
+
 const initialState = {
   transactions: [
-    { id: 1, text: "Payment", category: "Transfer", amount: 1500 },
-    { id: 2, text: "Keyboard", category: "Shopping", amount: -200 },
+    {
+      id: 1,
+      text: "Payment",
+      category: "Transfer",
+      amount: 1500,
+      date: currentDate,
+    },
+    {
+      id: 2,
+      text: "Keyboard",
+      category: "Shopping",
+      amount: -200,
+      date: currentDate,
+    },
+    {
+      id: 3,
+      text: "Book",
+      category: "Shopping",
+      amount: -20,
+      date: yesterdayDate,
+    },
+    {
+      id: 4,
+      text: "Boba",
+      category: "Food",
+      amount: -8,
+      date: yesterdayDate,
+    },
+    {
+      id: 5,
+      text: "Salary",
+      category: "Income",
+      amount: 2000,
+      date: olderDate,
+    },
   ],
   // error: null,
   // loading: true,

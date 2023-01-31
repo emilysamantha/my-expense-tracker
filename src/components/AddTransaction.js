@@ -3,7 +3,7 @@ import { GlobalContext } from "../context/GlobalState";
 import { v4 as uuidv4 } from "uuid";
 
 const AddTransaction = () => {
-  const { addTransaction } = useContext(GlobalContext);
+  const { transactions, addTransaction } = useContext(GlobalContext);
 
   // Hooks
   const [text, setText] = useState("");
@@ -31,10 +31,10 @@ const AddTransaction = () => {
       date: new Date(),
     };
 
-    console.log(newTransaction.date);
-
     addTransaction(newTransaction);
     toggleForm();
+
+    console.log(transactions);
   };
 
   return (

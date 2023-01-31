@@ -166,6 +166,16 @@ form > p:hover {
   cursor: pointer;
 }
 
+.date-border {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #bbb;
+}
+
+.date-border p {
+  margin: 10px 0 5px;
+}
+
 .list {
   list-style-type: none;
   padding: 0;
