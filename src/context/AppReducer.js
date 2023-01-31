@@ -9,19 +9,12 @@ export default (state, action) => {
     //   transactions: action.payload,
     // };
     case "DELETE_TRANSACTION":
-      if (
-        window.confirm("Are you sure you want to delete this transaction?") ==
-        true
-      ) {
-        return {
-          ...state,
-          transactions: state.transactions.filter(
-            (transaction) => transaction.id !== action.payload
-          ),
-        };
-      } else {
-        return state;
-      }
+      return {
+        ...state,
+        transactions: state.transactions.filter(
+          (transaction) => transaction.id !== action.payload
+        ),
+      };
 
     case "ADD_TRANSACTION":
       // Most recent transaction goes first

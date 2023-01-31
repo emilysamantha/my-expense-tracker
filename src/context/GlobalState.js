@@ -87,10 +87,15 @@ export const GlobalProvider = ({ children }) => {
     //     payload: err.response.data.error,
     //   });
     // }
-    dispatch({
-      type: "DELETE_TRANSACTION",
-      payload: id,
-    });
+    if (
+      window.confirm("Are you sure you want to delete this transaction?") ==
+      true
+    ) {
+      dispatch({
+        type: "DELETE_TRANSACTION",
+        payload: id,
+      });
+    }
   }
 
   function addTransaction(transaction) {
