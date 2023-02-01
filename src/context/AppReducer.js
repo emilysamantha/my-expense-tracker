@@ -22,6 +22,12 @@ export default (state, action) => {
         ...state,
         transactions: [action.payload, ...state.transactions],
       };
+
+    case "TOGGLE_THEME":
+      return {
+        ...state,
+        theme: action.payload === "light" ? "dark" : "light",
+      };
     // case "TRANSACTION_ERROR":
     // return {
     //   ...state,

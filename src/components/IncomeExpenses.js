@@ -3,7 +3,7 @@ import { GlobalContext } from "../context/GlobalState";
 import { numberWithCommas } from "../utils/format";
 
 const IncomeExpenses = () => {
-  const { transactions } = useContext(GlobalContext);
+  const { transactions, theme } = useContext(GlobalContext);
 
   // Get current month's amounts
   const amounts = [];
@@ -37,7 +37,13 @@ const IncomeExpenses = () => {
   return (
     <div>
       <h4 className="month">{currentMonth}</h4>
-      <div className="box-container inc-exp">
+      <div
+        className={
+          theme === "light"
+            ? "box-container inc-exp light"
+            : "box-container inc-exp dark"
+        }
+      >
         <div>
           <h4>Income</h4>
           <p id="money-plus" className="money plus">

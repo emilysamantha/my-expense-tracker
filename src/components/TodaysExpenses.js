@@ -3,7 +3,7 @@ import { GlobalContext } from "../context/GlobalState";
 import { numberWithCommas } from "../utils/format";
 
 const TodaysExpenses = () => {
-  const { transactions } = useContext(GlobalContext);
+  const { transactions, theme } = useContext(GlobalContext);
 
   const todayAmounts = [];
   const currentDate = new Date();
@@ -28,7 +28,11 @@ const TodaysExpenses = () => {
   ).toFixed(2);
 
   return (
-    <div className="box-container">
+    <div
+      className={
+        theme === "light" ? "box-container light" : "box-container dark"
+      }
+    >
       <i class="fa-solid fa-calendar-day"></i>
       <div>
         <h2>Today's Expenses</h2>

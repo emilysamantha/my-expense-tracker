@@ -3,7 +3,7 @@ import { GlobalContext } from "../context/GlobalState";
 import { v4 as uuidv4 } from "uuid";
 
 const AddTransaction = () => {
-  const { transactions, addTransaction } = useContext(GlobalContext);
+  const { transactions, addTransaction, theme } = useContext(GlobalContext);
 
   // Hooks
   const [text, setText] = useState("");
@@ -38,9 +38,16 @@ const AddTransaction = () => {
   };
 
   return (
-    <div>
+    <div className={theme === "light" ? "light" : "dark"}>
       {!showForm && (
-        <div onClick={toggleForm} className="box-container button">
+        <div
+          onClick={toggleForm}
+          className={
+            theme === "light"
+              ? "box-container button light"
+              : "box-container button dark"
+          }
+        >
           <i class="fa-solid fa-plus icon"></i>
           <p>Add New Transaction</p>
         </div>

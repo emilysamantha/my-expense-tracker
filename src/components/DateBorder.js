@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { GlobalContext } from "../context/GlobalState";
 
 const DateBorder = ({ date }) => {
+  const { theme } = useContext(GlobalContext);
+
   const todayDate = new Date();
   const yesterdayDate = new Date();
   yesterdayDate.setDate(todayDate.getDate() - 1);
@@ -23,7 +26,9 @@ const DateBorder = ({ date }) => {
   const fullDate = day + " " + month + " " + year;
 
   return (
-    <div className="date-border">
+    <div
+      className={theme === "light" ? "date-border light" : "date-border dark"}
+    >
       <p>
         <b>{dayText}</b>
       </p>

@@ -1,33 +1,39 @@
-@import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap");
 :root {
   --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --green: #2ecc71;
+  --red: #d03d2d;
+  --light-bg: #f7f7f7;
+  --light-btn: #fff;
+  --btn-hover-light: rgb(227, 227, 227);
+  --dark-bg: #1b1b1b;
+  --dark-btn: #222222;
+  --btn-hover-dark: #303030;
+  --purple: #7c61ff;
+  --purple-hvr: #9580ff;
+  --turquoise: #19a2c1;
+  --light-grey: #bbb;
+  --dark-grey: rgb(52, 52, 52);
 }
 
 * {
   box-sizing: border-box;
-  color: rgb(32, 32, 32);
+}
+
+html,
+body {
+  min-height: 100vh;
+  height: 100%;
 }
 
 body {
-  background-color: #f7f7f7;
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
   min-height: 100vh;
   margin: 0;
   font-family: "Poppins", sans-serif;
-}
-
-.exp-tracker-container {
-  display: flex;
-  gap: 50px;
-}
-
-.container {
-  margin: 30px auto;
-  width: 350px;
 }
 
 h1 {
@@ -39,9 +45,16 @@ h2 {
 }
 
 h3 {
-  border-bottom: 1px solid #bbb;
   padding-bottom: 10px;
   margin: 0 0 10px;
+}
+
+.light > h3 {
+  border-bottom: 1px solid var(--light-grey);
+}
+
+.dark > h3 {
+  border-bottom: 1px solid var(--dark-grey);
 }
 
 h4 {
@@ -49,73 +62,69 @@ h4 {
   text-transform: uppercase;
 }
 
-h5 {
-  border-bottom: 1px solid #bbb;
-  padding-bottom: 5px;
-}
-
 a {
   text-decoration: none;
 }
 
+.light {
+  color: var(--dark-bg);
+  background-color: var(--light-bg);
+}
+
+.dark {
+  color: var(--light-bg);
+  background-color: var(--dark-bg);
+}
+
+/* Containers */
+.main-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 75vw;
+  max-width: 800px;
+  margin-bottom: 10px;
+}
+
+.exp-tracker-container {
+  display: flex;
+  width: 75vw;
+  max-width: 800px;
+  justify-content: space-between;
+}
+
+.container {
+  /* margin: 30px auto; */
+  width: 350px;
+}
+
 .box-container {
-  background-color: #fff;
   box-shadow: var(--box-shadow);
   padding: 20px;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  /* margin-top: 10px; */
   margin-bottom: 20px;
   border-radius: 5px;
 }
 
-.inc-exp > div {
-  flex: 1;
-  text-align: center;
+.box-container.light {
+  background-color: var(--light-btn);
 }
 
-.inc-exp > div:first-of-type {
-  border-right: 1px solid #dedede;
+.box-container.dark {
+  background-color: var(--dark-btn);
 }
 
-.fa-calendar-day {
-  font-size: 55px;
-}
-
-.money {
-  font-size: 20px;
-  letter-spacing: 1px;
-  margin: 5px 0;
-}
-
-.plus {
-  color: #2ecc71;
-}
-
-.minus {
-  color: #c0392b;
-}
-
-.month {
-  text-align: center;
-}
-
-.button {
-  padding: 3px 30px;
-  font-size: 1.1rem;
-  transition: 0.5s;
-}
-
-.button:hover {
-  background-color: rgb(227, 227, 227);
-  cursor: pointer;
-}
-
-.icon {
-  font-size: 30px;
-}
-
+/* Toggle switch */
 label {
   display: inline-block;
   margin: 10px 0;
@@ -131,9 +140,129 @@ input[type="number"] {
   width: 100%;
 }
 
+.toggle-container i {
+  font-size: 25px;
+}
+
+.toggle-container {
+  display: inline-flex;
+  align-items: center;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--dark-grey);
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: var(--light-btn);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: var(--turquoise);
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+.switch-checkbox {
+  padding: 10px;
+}
+
+/* Income Expenses Box */
+.month {
+  text-align: center;
+}
+
+.inc-exp > div {
+  flex: 1;
+  text-align: center;
+}
+
+.inc-exp > div:first-of-type {
+  border-right: 1px solid #dedede;
+}
+
+.money {
+  font-size: 20px;
+  letter-spacing: 1px;
+  margin: 5px 0;
+}
+
+.plus {
+  color: var(--green);
+}
+
+.minus {
+  color: var(--red);
+}
+
+/* Today's Expenses Box */
+
+.fa-calendar-day {
+  font-size: 55px;
+}
+
+/* View Summary Buttons */
+.button {
+  padding: 3px 30px;
+  font-size: 1.1rem;
+}
+
+.button.light:hover {
+  background-color: var(--btn-hover-light);
+  cursor: pointer;
+}
+
+.button.dark:hover {
+  background-color: var(--btn-hover-dark);
+  cursor: pointer;
+}
+
+.btn-icon {
+  font-size: 30px;
+}
+
+/* Add Transaction Form */
 .btn {
   cursor: pointer;
-  background-color: #9c88ff;
+  background-color: var(--purple);
   box-shadow: var(--box-shadow);
   color: #fff;
   border: 0;
@@ -147,7 +276,7 @@ input[type="number"] {
 }
 
 .btn:hover {
-  background-color: #ad9dff;
+  background-color: var(--purple-hvr);
 }
 
 .btn:focus,
@@ -158,7 +287,7 @@ input[type="number"] {
 form > p {
   margin-top: 0;
   text-align: center;
-  color: gray;
+  color: var(--light-grey);
   transition: 0.5s;
 }
 
@@ -166,16 +295,25 @@ form > p:hover {
   cursor: pointer;
 }
 
+/* Date Border */
 .date-border {
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid #bbb;
+}
+
+.date-border.light {
+  border-bottom: 1px solid var(--light-grey);
+}
+
+.date-border.dark {
+  border-bottom: 1px solid var(--dark-grey);
 }
 
 .date-border p {
   margin: 10px 0 5px;
 }
 
+/* Transaction List */
 .list {
   list-style-type: none;
   padding: 0;
@@ -183,21 +321,29 @@ form > p:hover {
 }
 
 .list li {
-  background-color: #fff;
   box-shadow: var(--box-shadow);
-  color: #333;
   position: relative;
   padding: 12px;
   margin: 10px 0;
   border-radius: 5px;
 }
 
-.list li.plus {
-  border-right: 8px solid #2ecc71;
+li.plus {
+  border-right: 8px solid var(--green);
 }
 
-.list li.minus {
-  border-right: 8px solid #c0392b;
+li.minus {
+  border-right: 8px solid var(--red);
+}
+
+li.light {
+  background-color: var(--light-btn);
+  color: var(--dark-bg);
+}
+
+li.dark {
+  background-color: var(--dark-btn);
+  color: var(--light-bg);
 }
 
 .transaction-title {

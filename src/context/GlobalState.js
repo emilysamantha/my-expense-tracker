@@ -47,6 +47,7 @@ const initialState = {
       date: olderDate,
     },
   ],
+  theme: "dark",
   // error: null,
   // loading: true,
 };
@@ -122,10 +123,19 @@ export const GlobalProvider = ({ children }) => {
     });
   }
 
+  function toggleTheme(theme) {
+    dispatch({
+      type: "TOGGLE_THEME",
+      payload: theme,
+    });
+  }
+
   return (
     <GlobalContext.Provider
       value={{
         transactions: state.transactions,
+        theme: state.theme,
+        toggleTheme,
         // error: state.error,
         // loading: state.loading,
         // getTransactions,

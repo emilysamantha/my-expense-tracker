@@ -4,10 +4,20 @@ import { numberWithCommas } from "../utils/format";
 
 const Transaction = ({ transaction }) => {
   const sign = transaction.amount < 0 ? "-" : "+";
-  const { deleteTransaction } = useContext(GlobalContext);
+  const { deleteTransaction, theme } = useContext(GlobalContext);
 
   return (
-    <li className={transaction.amount < 0 ? "minus" : "plus"}>
+    <li
+      className={
+        transaction.amount < 0
+          ? theme === "light"
+            ? "minus light"
+            : "minus dark"
+          : theme === "light"
+          ? "plus light"
+          : "plus dark"
+      }
+    >
       <div className="transaction-title">
         {transaction.text}{" "}
         <span className={transaction.amount < 0 ? "minus" : "plus"}>

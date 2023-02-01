@@ -4,7 +4,7 @@ import DateBorder from "./DateBorder";
 import { GlobalContext } from "../context/GlobalState";
 
 const TransactionList = () => {
-  const { transactions } = useContext(GlobalContext);
+  const { transactions, theme } = useContext(GlobalContext);
 
   function getRows() {
     const rows = [];
@@ -31,7 +31,7 @@ const TransactionList = () => {
   }
 
   return (
-    <div>
+    <div className={theme === "light" ? "light" : "dark"}>
       <h3>Transaction History</h3>
       <ul className="list">{getRows()}</ul>
     </div>
