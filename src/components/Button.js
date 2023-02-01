@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import { GlobalContext } from "../context/GlobalState";
 
-const Button = ({ icon, title }) => {
+const Button = ({ icon, title, page }) => {
   const { theme } = useContext(GlobalContext);
   return (
-    <a
-      href="/"
+    <Link
+      to={page}
       className={
         theme === "light"
           ? "box-container button light"
@@ -15,7 +16,7 @@ const Button = ({ icon, title }) => {
       <i class={`${icon} btn-icon`}></i>
       <p>{title}</p>
       <i class="fa-solid fa-chevron-right"></i>
-    </a>
+    </Link>
   );
 };
 

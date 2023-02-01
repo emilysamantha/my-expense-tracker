@@ -362,7 +362,7 @@ li.dark {
 
 .delete-btn {
   cursor: pointer;
-  background-color: #e74c3c;
+  background-color: var(--red);
   border: 0;
   color: #fff;
   font-size: 20px;
