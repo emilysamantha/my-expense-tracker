@@ -5,6 +5,7 @@ import Total from "../components/Total";
 import ToggleButton from "../components/ToggleButton";
 import { GlobalContext } from "../context/GlobalState";
 import TransactionList from "../components/TransactionList";
+import CategoriesList from "../components/CategoriesList";
 
 const Summary = ({ incExp }) => {
   // Get current date
@@ -88,6 +89,13 @@ const Summary = ({ incExp }) => {
         {option === "all" && (
           <TransactionList
             transactions={incExp === "inc" ? monthIncome : monthExpense}
+          />
+        )}
+        {option === "categories" && (
+          <CategoriesList
+            transactions={incExp === "inc" ? monthIncome : monthExpense}
+            month={chosenDate.getMonth()}
+            year={chosenDate.getFullYear()}
           />
         )}
       </div>

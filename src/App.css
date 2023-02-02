@@ -138,6 +138,12 @@ a {
   background-color: var(--dark-btn);
 }
 
+.category-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 /* Toggle switch */
 label {
   display: inline-block;
@@ -328,7 +334,8 @@ form > p:hover {
 }
 
 /* Transaction List */
-.list {
+.list,
+.categories-list {
   list-style-type: none;
   padding: 0;
   margin-bottom: 40px;
@@ -337,9 +344,31 @@ form > p:hover {
 .list li {
   box-shadow: var(--box-shadow);
   position: relative;
-  padding: 12px;
+  padding: 10px 15px;
   margin: 10px 0;
   border-radius: 5px;
+}
+
+.categories-list li {
+  box-shadow: var(--box-shadow);
+  position: relative;
+  padding: 3px 15px;
+  margin: 10px 0;
+  border-radius: 5px;
+  text-transform: capitalize;
+}
+
+.category-right {
+  display: flex;
+  align-items: center;
+}
+
+.category-right:hover {
+  cursor: pointer;
+}
+
+.category-right p {
+  margin-right: 5px;
 }
 
 li.plus {
