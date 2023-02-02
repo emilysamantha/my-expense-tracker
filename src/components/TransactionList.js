@@ -3,8 +3,8 @@ import Transaction from "./Transaction";
 import DateBorder from "./DateBorder";
 import { GlobalContext } from "../context/GlobalState";
 
-const TransactionList = () => {
-  const { transactions, theme } = useContext(GlobalContext);
+const TransactionList = ({ transactions }) => {
+  const { theme } = useContext(GlobalContext);
 
   function getRows() {
     const rows = [];

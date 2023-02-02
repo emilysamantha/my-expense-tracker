@@ -12,7 +12,7 @@ import AddTransaction from "../components/AddTransaction";
 import { GlobalContext } from "../context/GlobalState";
 
 const Home = () => {
-  const { theme } = useContext(GlobalContext);
+  const { theme, transactions } = useContext(GlobalContext);
   return (
     <div
       className={
@@ -26,7 +26,7 @@ const Home = () => {
 
       <div className="exp-tracker-container">
         <div className="container">
-          <Total title="Balance" />
+          <Total title="Balance" calculate="balance" month={-1} year={-1} />
           <IncomeExpenses />
           <TodaysExpenses />
           <Button
@@ -43,7 +43,7 @@ const Home = () => {
         <div className="container">
           <AddTransaction />
           <br />
-          <TransactionList />
+          <TransactionList transactions={transactions} />
         </div>
       </div>
     </div>
