@@ -43,6 +43,7 @@ const Home = () => {
         <div className="container">
           <AddTransaction />
           <br />
+          <h3>Transaction History</h3>
           <TransactionList transactions={transactions} />
         </div>
       </div>

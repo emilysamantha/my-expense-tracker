@@ -32,7 +32,6 @@ const TransactionList = ({ transactions }) => {
 
   return (
     <div className={theme === "light" ? "light" : "dark"}>
-      <h3>Transaction History</h3>
       <ul className="list">{getRows()}</ul>
     </div>
   );

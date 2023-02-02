@@ -13,8 +13,8 @@ const Total = ({ title, calculate, month, year }) => {
     amounts = transactions
       .filter(
         (transaction) =>
-          transaction.date.getMonth() == month &&
-          transaction.date.getFullYear() == year
+          transaction.date.getMonth() === month &&
+          transaction.date.getFullYear() === year
       )
       .map((transaction) => transaction.amount);
   }
@@ -24,11 +24,15 @@ const Total = ({ title, calculate, month, year }) => {
       total = amounts
         .reduce((acc, amount) => (acc += parseFloat(amount)), 0)
         .toFixed(2);
+      break;
     case "income":
       total = amounts
         .filter((amount) => amount > 0)
         .reduce((acc, amount) => (acc += parseFloat(amount)), 0)
         .toFixed(2);
+      break;
+    default:
+      total = 0;
   }
 
   return (

@@ -89,7 +89,7 @@ export const GlobalProvider = ({ children }) => {
     //   });
     // }
     if (
-      window.confirm("Are you sure you want to delete this transaction?") ==
+      window.confirm("Are you sure you want to delete this transaction?") ===
       true
     ) {
       dispatch({

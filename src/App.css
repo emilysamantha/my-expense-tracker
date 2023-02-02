@@ -49,11 +49,11 @@ h3 {
   margin: 0 0 10px;
 }
 
-.light > h3 {
+.light h3 {
   border-bottom: 1px solid var(--light-grey);
 }
 
-.dark > h3 {
+.dark h3 {
   border-bottom: 1px solid var(--dark-grey);
 }
 
@@ -82,7 +82,8 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
+  padding-top: 5vh;
 }
 
 .header {
@@ -390,14 +391,32 @@ li.dark {
 .month-picker {
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  width: 75vw;
-  max-width: 800px;
-  padding: 5px 150px;
+  justify-content: space-between;
+  width: 350px;
   font-size: 20px;
-  margin: 30px 0;
+  margin: 20px 0 40px;
 }
 
 .month-picker > i:hover {
   cursor: pointer;
+}
+
+.option-picker {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0 10px;
+}
+
+.option-picker div {
+  flex: 1;
+  text-align: center;
+  padding: 5px 0;
+}
+
+.option-picker div:hover {
+  cursor: pointer;
+}
+
+.option-picked {
+  border-bottom: 3px solid var(--light-grey);
 }
