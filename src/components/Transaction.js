@@ -21,7 +21,7 @@ const Transaction = ({ transaction }) => {
       <div className="transaction-title">
         {transaction.text}{" "}
         <span className={transaction.amount < 0 ? "minus" : "plus"}>
-          {sign}${numberWithCommas(Math.abs(transaction.amount))}
+          {sign}${numberWithCommas(Math.abs(transaction.amount).toFixed(2))}
         </span>
       </div>
       <p className="category">{transaction.category}</p>
