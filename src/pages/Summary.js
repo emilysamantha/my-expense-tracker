@@ -1,11 +1,12 @@
 import React, { useContext, useState } from "react";
+import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import Total from "../components/Total";
 import ToggleButton from "../components/ToggleButton";
 import { GlobalContext } from "../context/GlobalState";
 import TransactionList from "../components/TransactionList";
 
-const IncomeSummary = () => {
+const Summary = ({ incExp }) => {
   // Get current date
   let currentDate = new Date();
 
@@ -27,11 +28,20 @@ const IncomeSummary = () => {
     setChosenDate(dateInc);
   }
 
-  // Function to return this month's transactions
-  const monthTransactions = transactions.filter(
+  // Get this month's income
+  const monthIncome = transactions.filter(
     (transaction) =>
       transaction.date.getMonth() === chosenDate.getMonth() &&
-      transaction.date.getFullYear() === chosenDate.getFullYear()
+      transaction.date.getFullYear() === chosenDate.getFullYear() &&
+      transaction.amount > 0
+  );
+
+  // Get this month's expense
+  const monthExpense = transactions.filter(
+    (transaction) =>
+      transaction.date.getMonth() === chosenDate.getMonth() &&
+      transaction.date.getFullYear() === chosenDate.getFullYear() &&
+      transaction.amount < 0
   );
 
   return (
@@ -40,8 +50,13 @@ const IncomeSummary = () => {
         theme === "light" ? "main-container light" : "main-container dark"
       }
     >
+      <Link className="back-btn" to="/">
+        <i class="fa-solid fa-chevron-left"></i> Back
+      </Link>
       <div className="header">
-        <Header title="Income Summary" />
+        <Header
+          title={incExp === "inc" ? "Income Summary" : "Expense Summary"}
+        />
         <ToggleButton />
       </div>
       <div className="month-picker">
@@ -51,8 +66,8 @@ const IncomeSummary = () => {
       </div>
       <div className="container">
         <Total
-          title="Total Income"
-          calculate="income"
+          title={incExp === "inc" ? "Total Income" : "Total Expense"}
+          calculate={incExp === "inc" ? "income" : "expense"}
           month={chosenDate.getMonth()}
           year={chosenDate.getFullYear()}
         />
@@ -70,10 +85,14 @@ const IncomeSummary = () => {
             Categories
           </div>
         </div>
-        <TransactionList transactions={monthTransactions} />
+        {option === "all" && (
+          <TransactionList
+            transactions={incExp === "inc" ? monthIncome : monthExpense}
+          />
+        )}
       </div>
     </div>
   );
 };
 
-export default IncomeSummary;
+export default Summary;

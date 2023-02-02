@@ -21,24 +21,33 @@ const Total = ({ title, calculate, month, year }) => {
 
   switch (calculate) {
     case "balance":
-      total = amounts
-        .reduce((acc, amount) => (acc += parseFloat(amount)), 0)
-        .toFixed(2);
+      total = amounts.reduce((acc, amount) => (acc += parseFloat(amount)), 0);
+
       break;
     case "income":
       total = amounts
         .filter((amount) => amount > 0)
-        .reduce((acc, amount) => (acc += parseFloat(amount)), 0)
-        .toFixed(2);
+        .reduce((acc, amount) => (acc += parseFloat(amount)), 0);
+
+      break;
+    case "expense":
+      total = amounts
+        .filter((amount) => amount < 0)
+        .reduce((acc, amount) => (acc += parseFloat(amount)), 0);
+
       break;
     default:
       total = 0;
   }
 
+  const sign = total < 0 ? "-" : "";
+
   return (
     <div>
       <h4>{title}</h4>
-      <h1 id="balance">${numberWithCommas(total)}</h1>
+      <h1 id="balance">
+        {sign}${numberWithCommas(Math.abs(total).toFixed(2))}
+      </h1>
     </div>
   );
 };

@@ -66,6 +66,19 @@ a {
   text-decoration: none;
 }
 
+.back-btn {
+  width: 75vw;
+  max-width: 800px;
+}
+
+.dark .back-btn {
+  color: var(--light-bg);
+}
+
+.light .back-btn {
+  color: var(--dark-bg);
+}
+
 .light {
   color: var(--dark-bg);
   background-color: var(--light-bg);
