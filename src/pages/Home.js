@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 
 import Header from "../components/Header";
 import ToggleButton from "../components/ToggleButton";
@@ -10,9 +10,18 @@ import TransactionList from "../components/TransactionList";
 import AddTransaction from "../components/AddTransaction";
 
 import { GlobalContext } from "../context/GlobalState";
+import TransContextMenu from "../menu/TransContextMenu";
 
 const Home = () => {
-  const { theme, transactions } = useContext(GlobalContext);
+  const { theme, transactions, show, setShow } = useContext(GlobalContext);
+
+  const handleClick = () => setShow(false);
+
+  useEffect(() => {
+    window.addEventListener("click", handleClick);
+    return () => window.removeEventListener("click", handleClick);
+  }, []);
+
   return (
     <div
       className={
@@ -45,6 +54,7 @@ const Home = () => {
           <br />
           <h3>Transaction History</h3>
           <TransactionList transactions={transactions} />
+          {show && <TransContextMenu />}
         </div>
       </div>
     </div>

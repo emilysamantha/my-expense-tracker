@@ -48,6 +48,8 @@ const initialState = {
     },
   ],
   theme: "dark",
+  show: false,
+  cmPosition: { top: 0, left: 0 },
   // error: null,
   // loading: true,
 };
@@ -130,12 +132,30 @@ export const GlobalProvider = ({ children }) => {
     });
   }
 
+  function setShow(show) {
+    dispatch({
+      type: "SET_SHOW",
+      payload: show,
+    });
+  }
+
+  function setCmPosition(position) {
+    dispatch({
+      type: "SET_CM_POSITION",
+      payload: position,
+    });
+  }
+
   return (
     <GlobalContext.Provider
       value={{
         transactions: state.transactions,
         theme: state.theme,
         toggleTheme,
+        show: state.show,
+        setShow,
+        cmPosition: state.cmPosition,
+        setCmPosition,
         // error: state.error,
         // loading: state.loading,
         // getTransactions,

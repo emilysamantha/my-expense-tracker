@@ -28,6 +28,18 @@ export default (state, action) => {
         ...state,
         theme: action.payload === "light" ? "dark" : "light",
       };
+
+    case "SET_SHOW":
+      return {
+        ...state,
+        show: action.payload,
+      };
+
+    case "SET_CM_POSITION":
+      return {
+        ...state,
+        cmPosition: action.payload,
+      };
     // case "TRANSACTION_ERROR":
     // return {
     //   ...state,

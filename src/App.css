@@ -493,3 +493,38 @@ li.dark {
 .option-picked {
   border-bottom: 3px solid var(--light-grey);
 }
+
+/* Context Menu */
+.context-menu-container {
+  border-radius: 5px;
+  position: absolute;
+  width: 100px;
+  box-shadow: var(--box-shadow);
+  font-size: 0.9rem;
+  overflow: hidden;
+}
+
+.context-menu-container.light {
+  background-color: var(--light-btn);
+  color: var(--dark-bg);
+}
+
+.context-menu-container.dark {
+  background-color: var(--dark-btn);
+  color: var(--light-bg);
+}
+
+.context-menu-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.context-menu-list li {
+  padding: 10px;
+}
+
+.context-menu-list li:hover {
+  cursor: pointer;
+  background-color: var(--btn-hover-dark);
+}

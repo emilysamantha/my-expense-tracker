@@ -4,7 +4,8 @@ import { numberWithCommas } from "../utils/format";
 
 const Transaction = ({ transaction }) => {
   const sign = transaction.amount < 0 ? "-" : "+";
-  const { deleteTransaction, theme } = useContext(GlobalContext);
+  const { deleteTransaction, theme, setShow, setCmPosition } =
+    useContext(GlobalContext);
 
   return (
     <li
@@ -17,6 +18,12 @@ const Transaction = ({ transaction }) => {
           ? "plus light"
           : "plus dark"
       }
+      // Custom context menu to edit and delete transaction
+      onContextMenu={(e) => {
+        e.preventDefault();
+        setCmPosition({ top: e.pageY, left: e.pageX });
+        setShow(true);
+      }}
     >
       <div className="transaction-title">
         {transaction.text}{" "}
