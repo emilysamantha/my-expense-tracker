@@ -2,10 +2,11 @@ import React, { useContext } from "react";
 import { GlobalContext } from "../context/GlobalState";
 import Category from "./Category";
 
-const CategoriesList = ({ transactions, month, year }) => {
+const CategoriesList = ({ transactions, incExp }) => {
   const { theme } = useContext(GlobalContext);
 
-  function getCategories() {
+  // Function to get list of the unique categories from the given transactions
+  function getUniqueCategories() {
     // Get all categories
     const allCategories = transactions.map((transaction) =>
       String(transaction.category).toLowerCase()
@@ -17,13 +18,12 @@ const CategoriesList = ({ transactions, month, year }) => {
     return uniqueCategories;
   }
 
-  function getRows() {
-    const rows = getCategories().map((category) => (
+  function getCategories() {
+    const rows = getUniqueCategories().map((category) => (
       <Category
         transactions={transactions}
         category={category}
-        month={month}
-        year={year}
+        incExp={incExp}
       />
     ));
     return rows;
@@ -31,7 +31,7 @@ const CategoriesList = ({ transactions, month, year }) => {
 
   return (
     <div className={theme === "light" ? "light" : "dark"}>
-      <ul className="categories-list">{getRows()}</ul>
+      <ul className="categories-list">{getCategories()}</ul>
     </div>
   );
 };

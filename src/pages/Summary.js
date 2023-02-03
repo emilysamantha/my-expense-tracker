@@ -94,8 +94,7 @@ const Summary = ({ incExp }) => {
         {option === "categories" && (
           <CategoriesList
             transactions={incExp === "inc" ? monthIncome : monthExpense}
-            month={chosenDate.getMonth()}
-            year={chosenDate.getFullYear()}
+            incExp={incExp}
           />
         )}
       </div>
