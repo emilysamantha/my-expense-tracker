@@ -58,7 +58,7 @@ const Summary = ({ incExp }) => {
         <Header
           title={incExp === "inc" ? "Income Summary" : "Expense Summary"}
         />
-        <ToggleButton />
+        <ToggleButton on={theme === "light" ? true : false} />
       </div>
       <div className="month-picker">
         <i class="fa-solid fa-chevron-left" onClick={() => decMonth()}></i>

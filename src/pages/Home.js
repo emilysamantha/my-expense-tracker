@@ -21,7 +21,7 @@ const Home = () => {
     >
       <div className="header">
         <Header title="Expense Tracker" />
-        <ToggleButton />
+        <ToggleButton on={theme === "light" ? true : false} />
       </div>
 
       <div className="exp-tracker-container">

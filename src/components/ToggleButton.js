@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../context/GlobalState";
 
-const ToggleButton = () => {
+const ToggleButton = ({ on }) => {
   const { theme, toggleTheme } = useContext(GlobalContext);
   const onToggle = () => {
     toggleTheme(theme);
@@ -15,7 +15,8 @@ const ToggleButton = () => {
       <i className="fa-solid fa-moon"></i>
       <div className="switch-checkbox">
         <label className="switch">
-          <input type="checkbox" onChange={onToggle} />
+          {on && <input type="checkbox" onChange={onToggle} checked />}
+          {!on && <input type="checkbox" onChange={onToggle} />}
           <span className="slider round"> </span>
         </label>
       </div>
