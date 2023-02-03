@@ -40,6 +40,12 @@ export default (state, action) => {
         ...state,
         cmPosition: action.payload,
       };
+
+    case "SET_TRANS_CLICKED":
+      return {
+        ...state,
+        transClicked: action.payload,
+      };
     // case "TRANSACTION_ERROR":
     // return {
     //   ...state,

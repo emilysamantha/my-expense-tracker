@@ -2,7 +2,8 @@ import React, { useContext } from "react";
 import { GlobalContext } from "../context/GlobalState";
 
 const TransContextMenu = () => {
-  const { deleteTransaction, theme, cmPosition } = useContext(GlobalContext);
+  const { deleteTransaction, theme, cmPosition, transClicked } =
+    useContext(GlobalContext);
   return (
     <div
       className={
@@ -14,7 +15,7 @@ const TransContextMenu = () => {
     >
       <ul className="context-menu-list">
         <li>Edit</li>
-        <li>Delete</li>
+        <li onClick={() => deleteTransaction(transClicked)}>Delete</li>
       </ul>
     </div>
   );

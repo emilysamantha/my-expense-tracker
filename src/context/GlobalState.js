@@ -50,6 +50,7 @@ const initialState = {
   theme: "dark",
   show: false,
   cmPosition: { top: 0, left: 0 },
+  transClicked: 0,
   // error: null,
   // loading: true,
 };
@@ -146,6 +147,13 @@ export const GlobalProvider = ({ children }) => {
     });
   }
 
+  function setTransClicked(id) {
+    dispatch({
+      type: "SET_TRANS_CLICKED",
+      payload: id,
+    });
+  }
+
   return (
     <GlobalContext.Provider
       value={{
@@ -156,6 +164,8 @@ export const GlobalProvider = ({ children }) => {
         setShow,
         cmPosition: state.cmPosition,
         setCmPosition,
+        transClicked: state.transClicked,
+        setTransClicked,
         // error: state.error,
         // loading: state.loading,
         // getTransactions,

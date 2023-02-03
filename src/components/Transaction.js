@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../context/GlobalState";
 import { numberWithCommas } from "../utils/format";
+import TransContextMenu from "../menu/TransContextMenu";
 
 const Transaction = ({ transaction }) => {
   const sign = transaction.amount < 0 ? "-" : "+";
-  const { deleteTransaction, theme, setShow, setCmPosition } =
+  const { deleteTransaction, theme, setShow, setCmPosition, setTransClicked } =
     useContext(GlobalContext);
 
   return (
@@ -23,6 +24,7 @@ const Transaction = ({ transaction }) => {
         e.preventDefault();
         setCmPosition({ top: e.pageY, left: e.pageX });
         setShow(true);
+        setTransClicked(transaction.id);
       }}
     >
       <div className="transaction-title">
@@ -32,6 +34,7 @@ const Transaction = ({ transaction }) => {
         </span>
       </div>
       <p className="category">{transaction.category}</p>
+
       <button
         onClick={() => deleteTransaction(transaction.id)}
         className="delete-btn"
