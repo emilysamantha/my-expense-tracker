@@ -13,9 +13,10 @@ import { GlobalContext } from "../context/GlobalState";
 import TransContextMenu from "../menu/TransContextMenu";
 
 const Home = () => {
-  const { theme, transactions, show, setShow } = useContext(GlobalContext);
+  const { theme, transactions, showCM, setShowCM, setCmPosition } =
+    useContext(GlobalContext);
 
-  const handleClick = () => setShow(false);
+  const handleClick = () => setShowCM(false);
 
   useEffect(() => {
     window.addEventListener("click", handleClick);
@@ -54,7 +55,7 @@ const Home = () => {
           <br />
           <h3>Transaction History</h3>
           <TransactionList transactions={transactions} />
-          {show && <TransContextMenu />}
+          {showCM && <TransContextMenu />}
         </div>
       </div>
     </div>

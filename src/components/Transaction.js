@@ -5,8 +5,15 @@ import TransContextMenu from "../menu/TransContextMenu";
 
 const Transaction = ({ transaction }) => {
   const sign = transaction.amount < 0 ? "-" : "+";
-  const { deleteTransaction, theme, setShow, setCmPosition, setTransClicked } =
-    useContext(GlobalContext);
+  const {
+    deleteTransaction,
+    theme,
+    setShowCM,
+    setCmPosition,
+    setTransClicked,
+  } = useContext(GlobalContext);
+
+  function editClicked() {}
 
   return (
     <li
@@ -23,7 +30,7 @@ const Transaction = ({ transaction }) => {
       onContextMenu={(e) => {
         e.preventDefault();
         setCmPosition({ top: e.pageY, left: e.pageX });
-        setShow(true);
+        setShowCM(true);
         setTransClicked(transaction.id);
       }}
     >

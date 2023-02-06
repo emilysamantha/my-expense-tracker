@@ -4,6 +4,9 @@ import { GlobalContext } from "../context/GlobalState";
 const TransContextMenu = () => {
   const { deleteTransaction, theme, cmPosition, transClicked } =
     useContext(GlobalContext);
+
+  function callEdit(id) {}
+
   return (
     <div
       className={
@@ -14,7 +17,7 @@ const TransContextMenu = () => {
       style={{ top: cmPosition.top, left: cmPosition.left }}
     >
       <ul className="context-menu-list">
-        <li>Edit</li>
+        <li onClick={() => callEdit(transClicked)}>Edit</li>
         <li onClick={() => deleteTransaction(transClicked)}>Delete</li>
       </ul>
     </div>

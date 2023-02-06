@@ -48,9 +48,10 @@ const initialState = {
     },
   ],
   theme: "dark",
-  show: false,
+  showCM: false,
   cmPosition: { top: 0, left: 0 },
   transClicked: 0,
+  showEdit: false,
   // error: null,
   // loading: true,
 };
@@ -126,6 +127,13 @@ export const GlobalProvider = ({ children }) => {
     });
   }
 
+  function editTransaction(transaction) {
+    dispatch({
+      type: "EDIT_TRANSACTION",
+      payload: transaction,
+    });
+  }
+
   function toggleTheme(theme) {
     dispatch({
       type: "TOGGLE_THEME",
@@ -133,10 +141,10 @@ export const GlobalProvider = ({ children }) => {
     });
   }
 
-  function setShow(show) {
+  function setShowCM(showCM) {
     dispatch({
-      type: "SET_SHOW",
-      payload: show,
+      type: "SET_SHOW_CM",
+      payload: showCM,
     });
   }
 
@@ -154,23 +162,33 @@ export const GlobalProvider = ({ children }) => {
     });
   }
 
+  function setShowEdit(show) {
+    dispatch({
+      type: "SET_SHOW_EDIT",
+      payload: show,
+    });
+  }
+
   return (
     <GlobalContext.Provider
       value={{
         transactions: state.transactions,
         theme: state.theme,
         toggleTheme,
-        show: state.show,
-        setShow,
+        showCM: state.showCM,
+        setShowCM: setShowCM,
         cmPosition: state.cmPosition,
         setCmPosition,
         transClicked: state.transClicked,
         setTransClicked,
+        showEdit: state.showEdit,
+        setShowEdit,
         // error: state.error,
         // loading: state.loading,
         // getTransactions,
         deleteTransaction,
         addTransaction,
+        editTransaction,
       }}
     >
       {children}

@@ -23,16 +23,26 @@ export default (state, action) => {
         transactions: [action.payload, ...state.transactions],
       };
 
+    case "EDIT_TRANSACTION":
+      const transactionIndex = state.transactions.findIndex(
+        (transaction) => transaction.id === action.payload.id
+      );
+      state.transactions[transactionIndex] = action.payload;
+      return {
+        ...state,
+        transactions: state.transactions,
+      };
+
     case "TOGGLE_THEME":
       return {
         ...state,
         theme: action.payload === "light" ? "dark" : "light",
       };
 
-    case "SET_SHOW":
+    case "SET_SHOW_CM":
       return {
         ...state,
-        show: action.payload,
+        showCM: action.payload,
       };
 
     case "SET_CM_POSITION":
@@ -46,11 +56,19 @@ export default (state, action) => {
         ...state,
         transClicked: action.payload,
       };
+
+    case "SET_SHOW_EDIT":
+      return {
+        ...state,
+        showEdit: action.payload,
+      };
+
     // case "TRANSACTION_ERROR":
     // return {
     //   ...state,
     //   error: action.payload,
     // };
+
     default:
       return state;
   }
