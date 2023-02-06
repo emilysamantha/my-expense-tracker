@@ -3,7 +3,7 @@ import { GlobalContext } from "../context/GlobalState";
 import { v4 as uuidv4 } from "uuid";
 
 const AddTransaction = () => {
-  const { transactions, addTransaction, theme } = useContext(GlobalContext);
+  const { addTransaction, theme } = useContext(GlobalContext);
 
   // Hooks
   const [text, setText] = useState("");
@@ -19,7 +19,7 @@ const AddTransaction = () => {
     setAmount();
   };
 
-  // const { addTransaction } = useContext(GlobalContext);
+  // Add transaction form submit function
   const onSubmit = (e) => {
     e.preventDefault();
 
@@ -33,8 +33,6 @@ const AddTransaction = () => {
 
     addTransaction(newTransaction);
     toggleForm();
-
-    console.log(transactions);
   };
 
   return (
