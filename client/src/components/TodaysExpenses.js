@@ -35,7 +35,7 @@ const TodaysExpenses = () => {
         theme === "light" ? "box-container light" : "box-container dark"
       }
     >
-      <i class="fa-solid fa-calendar-day"></i>
+      <i className="fa-solid fa-calendar-day"></i>
       <div>
         <h2>Today's Expenses</h2>
         <h2 id="money-minus" className="money minus">

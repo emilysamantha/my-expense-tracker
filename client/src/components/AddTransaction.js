@@ -46,7 +46,7 @@ const AddTransaction = () => {
               : "box-container button dark"
           }
         >
-          <i class="fa-solid fa-plus icon"></i>
+          <i className="fa-solid fa-plus icon"></i>
           <p>Add New Transaction</p>
         </div>
       )}

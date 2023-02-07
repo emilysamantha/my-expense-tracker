@@ -32,7 +32,9 @@ const TransactionList = ({ transactions }) => {
       currentDate = transaction.date;
 
       // Push transaction itself
-      rows.push(<Transaction key={transaction.id} transaction={transaction} />);
+      rows.push(
+        <Transaction key={transaction._id} transaction={transaction} />
+      );
     }
     return rows;
   }

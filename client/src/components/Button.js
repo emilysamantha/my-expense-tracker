@@ -13,9 +13,9 @@ const Button = ({ icon, title, page }) => {
           : "box-container button dark"
       }
     >
-      <i class={`${icon} btn-icon`}></i>
+      <i className={`${icon} btn-icon`}></i>
       <p>{title}</p>
-      <i class="fa-solid fa-chevron-right"></i>
+      <i className="fa-solid fa-chevron-right"></i>
     </Link>
   );
 };
