@@ -21,7 +21,7 @@ const Transaction = ({ transaction }) => {
   const sign = transaction.amount < 0 ? "-" : "+";
 
   // Get date in "yyyy-MM-dd" format
-  const dateString = dateFormat(transaction.date, "yyyy-mm-dd");
+  const dateString = dateFormat(new Date(transaction.date), "yyyy-mm-dd");
 
   // Hooks for edit form
   const [text, setText] = useState(transaction.text);
@@ -55,7 +55,7 @@ const Transaction = ({ transaction }) => {
 
   return (
     <>
-      {transClicked === transaction.id && showEdit && (
+      {transClicked === transaction._id && showEdit && (
         <li className={theme === "light" ? "light" : "dark"}>
           <form onSubmit={onSubmit}>
             <h3>Edit Transaction</h3>
