@@ -38,27 +38,23 @@ export const GlobalProvider = ({ children }) => {
     }
   }
 
-  function deleteTransaction(id) {
-    // try {
-    //   await axios.delete(`/api/v1/transactions/${id}`);
-    //   dispatch({
-    //     type: "DELETE_TRANSACTION",
-    //     payload: id,
-    //   });
-    // } catch (err) {
-    //   dispatch({
-    //     type: "TRANSACTION_ERROR",
-    //     payload: err.response.data.error,
-    //   });
-    // }
+  async function deleteTransaction(id) {
     if (
       window.confirm("Are you sure you want to delete this transaction?") ===
       true
     ) {
-      dispatch({
-        type: "DELETE_TRANSACTION",
-        payload: id,
-      });
+      try {
+        await axios.delete(`/api/v1/transactions/${id}`);
+        dispatch({
+          type: "DELETE_TRANSACTION",
+          payload: id,
+        });
+      } catch (err) {
+        dispatch({
+          type: "TRANSACTION_ERROR",
+          payload: err.response.data.error,
+        });
+      }
     }
   }
 

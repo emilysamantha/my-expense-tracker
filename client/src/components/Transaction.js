@@ -102,7 +102,7 @@ const Transaction = ({ transaction }) => {
           </form>
         </li>
       )}
-      {!(transClicked === transaction.id && showEdit) && (
+      {!(transClicked === transaction._id && showEdit) && (
         <li
           className={
             transaction.amount < 0
@@ -118,7 +118,7 @@ const Transaction = ({ transaction }) => {
             e.preventDefault();
             setCmPosition({ top: e.pageY, left: e.pageX });
             setShowCM(true);
-            setTransClicked(transaction.id);
+            setTransClicked(transaction._id);
           }}
         >
           <div className="transaction-title">
@@ -130,7 +130,7 @@ const Transaction = ({ transaction }) => {
           <p className="category">{transaction.category}</p>
 
           <button
-            onClick={() => deleteTransaction(transaction.id)}
+            onClick={() => deleteTransaction(transaction._id)}
             className="delete-btn"
           >
             <i class="fa-solid fa-xmark"></i>
