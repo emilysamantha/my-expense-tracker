@@ -10,10 +10,12 @@ const IncomeExpenses = () => {
   // Get current month
   const currentDate = new Date();
   const currentMonth = currentDate.toLocaleString("default", { month: "long" });
+
   for (let i = 0; i < transactions.length; i++) {
     if (
-      transactions[i].date.toLocaleString("default", { month: "long" }) ===
-      currentMonth
+      new Date(transactions[i].date).toLocaleString("default", {
+        month: "long",
+      }) === currentMonth
     ) {
       amounts.push(transactions[i].amount);
     } else {
