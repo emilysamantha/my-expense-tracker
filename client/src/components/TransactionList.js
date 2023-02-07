@@ -1,10 +1,14 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Transaction from "./Transaction";
 import DateBorder from "./DateBorder";
 import { GlobalContext } from "../context/GlobalState";
 
 const TransactionList = ({ transactions }) => {
-  const { theme } = useContext(GlobalContext);
+  const { theme, getTransactions } = useContext(GlobalContext);
+
+  useEffect(() => {
+    getTransactions();
+  }, []);
 
   function getRows() {
     const rows = [];
@@ -17,7 +21,10 @@ const TransactionList = ({ transactions }) => {
 
       // If current transaction date is different from previous one
       // Add date border
-      if (transaction.date.toDateString() !== currentDate.toDateString()) {
+      if (
+        new Date(transaction.date).toDateString() !==
+        new Date(currentDate).toDateString()
+      ) {
         rows.push(<DateBorder date={transaction.date} />);
       }
 

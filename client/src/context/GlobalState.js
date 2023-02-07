@@ -1,59 +1,17 @@
 import React, { createContext, useReducer } from "react";
 import AppReducer from "./AppReducer";
-// import axios from "axios";
+import axios from "axios";
 
 // Initial state
-const currentDate = new Date();
-const yesterdayDate = new Date();
-yesterdayDate.setDate(currentDate.getDate() - 1);
-const olderDate = new Date();
-olderDate.setDate(currentDate.getDate() - 40);
-
 const initialState = {
-  transactions: [
-    {
-      id: 1,
-      text: "Payment",
-      category: "Transfer",
-      amount: 1500,
-      date: currentDate,
-    },
-    {
-      id: 2,
-      text: "Keyboard",
-      category: "Shopping",
-      amount: -200,
-      date: currentDate,
-    },
-    {
-      id: 3,
-      text: "Book",
-      category: "Shopping",
-      amount: -20,
-      date: yesterdayDate,
-    },
-    {
-      id: 4,
-      text: "Boba",
-      category: "Food",
-      amount: -8,
-      date: yesterdayDate,
-    },
-    {
-      id: 5,
-      text: "Salary",
-      category: "Income",
-      amount: 2000,
-      date: olderDate,
-    },
-  ],
+  transactions: [],
   theme: "dark",
   showCM: false,
   cmPosition: { top: 0, left: 0 },
   transClicked: 0,
   showEdit: false,
-  // error: null,
-  // loading: true,
+  error: null,
+  loading: true,
 };
 
 // Create context
@@ -64,20 +22,21 @@ export const GlobalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
   // Actions
-  // async function getTransactions() {
-  // try {
-  //   const res = await axios.get("/api/v1/transactions"); // Fetch transactions from the backend
-  //   dispatch({
-  //     type: "GET_TRANSACTIONS",
-  //     payload: res.data.data,
-  //   });
-  // } catch (err) {
-  //   dispatch({
-  //     type: "TRANSACTION_ERROR",
-  //     payload: err.response.data.error,
-  //   });
-  // }
-  // }
+  async function getTransactions() {
+    try {
+      // Fetch transactions from the backend
+      const res = await axios.get("/api/v1/transactions");
+      dispatch({
+        type: "GET_TRANSACTIONS",
+        payload: res.data.data,
+      });
+    } catch (err) {
+      dispatch({
+        type: "TRANSACTION_ERROR",
+        payload: err.response.data.error,
+      });
+    }
+  }
 
   function deleteTransaction(id) {
     // try {
@@ -173,22 +132,29 @@ export const GlobalProvider = ({ children }) => {
     <GlobalContext.Provider
       value={{
         transactions: state.transactions,
+
         theme: state.theme,
         toggleTheme,
+
         showCM: state.showCM,
         setShowCM: setShowCM,
+
         cmPosition: state.cmPosition,
         setCmPosition,
+
         transClicked: state.transClicked,
         setTransClicked,
+
         showEdit: state.showEdit,
         setShowEdit,
-        // error: state.error,
-        // loading: state.loading,
-        // getTransactions,
+
+        getTransactions,
         deleteTransaction,
         addTransaction,
         editTransaction,
+
+        error: state.error,
+        loading: state.loading,
       }}
     >
       {children}

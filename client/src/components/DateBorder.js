@@ -10,19 +10,21 @@ const DateBorder = ({ date }) => {
 
   let dayText = "";
 
+  const transDate = new Date(date);
+
   // Getting dayText
-  if (date.toDateString() === todayDate.toDateString()) {
+  if (transDate.toDateString() === todayDate.toDateString()) {
     dayText = "Today";
-  } else if (date.toDateString() === yesterdayDate.toDateString()) {
+  } else if (transDate.toDateString() === yesterdayDate.toDateString()) {
     dayText = "Yesterday";
   } else {
-    dayText = date.toLocaleString("en-us", { weekday: "long" });
+    dayText = transDate.toLocaleString("en-us", { weekday: "long" });
   }
 
   // Getting full date
-  const day = date.getDate();
-  const month = date.toLocaleString("default", { month: "long" });
-  const year = date.getFullYear();
+  const day = transDate.getDate();
+  const month = transDate.toLocaleString("default", { month: "long" });
+  const year = transDate.getFullYear();
   const fullDate = day + " " + month + " " + year;
 
   return (

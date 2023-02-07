@@ -10,12 +10,14 @@ const TodaysExpenses = () => {
 
   for (let i = 0; i < transactions.length; i++) {
     if (
-      transactions[i].date.toDateString() === currentDate.toDateString() &&
+      new Date(transactions[i].date).toDateString() ===
+        currentDate.toDateString() &&
       transactions[i].amount < 0
     ) {
       todayAmounts.push(transactions[i].amount);
     } else if (
-      transactions[i].date.toDateString() !== currentDate.toDateString()
+      new Date(transactions[i].date).toDateString() !==
+      currentDate.toDateString()
     ) {
       break;
     }

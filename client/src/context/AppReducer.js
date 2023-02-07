@@ -2,12 +2,13 @@ export default (state, action) => {
   // Changes the state based on the dispatch type
   // Takes the response and passes it down to each component
   switch (action.type) {
-    // case "GET_TRANSACTIONS":
-    // return {
-    //   ...state,
-    //   loading: false,
-    //   transactions: action.payload,
-    // };
+    case "GET_TRANSACTIONS":
+      return {
+        ...state,
+        loading: false,
+        transactions: action.payload,
+      };
+
     case "DELETE_TRANSACTION":
       return {
         ...state,
@@ -63,11 +64,11 @@ export default (state, action) => {
         showEdit: action.payload,
       };
 
-    // case "TRANSACTION_ERROR":
-    // return {
-    //   ...state,
-    //   error: action.payload,
-    // };
+    case "TRANSACTION_ERROR":
+      return {
+        ...state,
+        error: action.payload,
+      };
 
     default:
       return state;
