@@ -26,7 +26,7 @@ export default (state, action) => {
 
     case "EDIT_TRANSACTION":
       const transactionIndex = state.transactions.findIndex(
-        (transaction) => transaction.id === action.payload.id
+        (transaction) => transaction._id === action.payload._id
       );
       state.transactions[transactionIndex] = action.payload;
       return {

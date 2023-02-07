@@ -78,11 +78,22 @@ export const GlobalProvider = ({ children }) => {
     }
   }
 
-  function editTransaction(transaction) {
+  async function editTransaction(transaction) {
     dispatch({
       type: "EDIT_TRANSACTION",
       payload: transaction,
     });
+    try {
+      const res = await axios.put(
+        `api/v1/transactions/${transaction._id}`,
+        transaction
+      );
+    } catch (err) {
+      dispatch({
+        type: "TRANSACTION_ERROR",
+        payload: err.response.data.error,
+      });
+    }
   }
 
   function toggleTheme(theme) {

@@ -34,7 +34,7 @@ const Transaction = ({ transaction }) => {
     e.preventDefault();
     const newDate = new Date(date);
     const editedTransaction = {
-      ...transaction,
+      _id: transaction._id,
       text: text,
       category: category,
       amount: +amount,

@@ -4,9 +4,11 @@ const {
   getTransactions,
   addTransaction,
   deleteTransaction,
+  editTransaction,
 } = require("../controllers/transactions");
 
 router.route("/").get(getTransactions).post(addTransaction);
-router.route("/:id").delete(deleteTransaction);
+
+router.route("/:id").delete(deleteTransaction).put(editTransaction);
 
 module.exports = router;
