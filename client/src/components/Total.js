@@ -13,8 +13,8 @@ const Total = ({ title, calculate, month, year }) => {
     amounts = transactions
       .filter(
         (transaction) =>
-          transaction.date.getMonth() === month &&
-          transaction.date.getFullYear() === year
+          new Date(transaction.date).getMonth() === month &&
+          new Date(transaction.date).getFullYear() === year
       )
       .map((transaction) => transaction.amount);
   }

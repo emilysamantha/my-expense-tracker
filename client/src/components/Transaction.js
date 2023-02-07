@@ -133,7 +133,7 @@ const Transaction = ({ transaction }) => {
             onClick={() => deleteTransaction(transaction._id)}
             className="delete-btn"
           >
-            <i class="fa-solid fa-xmark"></i>
+            <i className="fa-solid fa-xmark"></i>
           </button>
         </li>
       )}

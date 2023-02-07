@@ -32,16 +32,16 @@ const Summary = ({ incExp }) => {
   // Get this month's income
   const monthIncome = transactions.filter(
     (transaction) =>
-      transaction.date.getMonth() === chosenDate.getMonth() &&
-      transaction.date.getFullYear() === chosenDate.getFullYear() &&
+      new Date(transaction.date).getMonth() === chosenDate.getMonth() &&
+      new Date(transaction.date).getFullYear() === chosenDate.getFullYear() &&
       transaction.amount > 0
   );
 
   // Get this month's expense
   const monthExpense = transactions.filter(
     (transaction) =>
-      transaction.date.getMonth() === chosenDate.getMonth() &&
-      transaction.date.getFullYear() === chosenDate.getFullYear() &&
+      new Date(transaction.date).getMonth() === chosenDate.getMonth() &&
+      new Date(transaction.date).getFullYear() === chosenDate.getFullYear() &&
       transaction.amount < 0
   );
 
@@ -52,7 +52,7 @@ const Summary = ({ incExp }) => {
       }
     >
       <Link className="back-btn" to="/">
-        <i class="fa-solid fa-chevron-left"></i> Back
+        <i className="fa-solid fa-chevron-left"></i> Back
       </Link>
       <div className="header">
         <Header
@@ -61,9 +61,9 @@ const Summary = ({ incExp }) => {
         <ToggleButton on={theme === "light" ? true : false} />
       </div>
       <div className="month-picker">
-        <i class="fa-solid fa-chevron-left" onClick={() => decMonth()}></i>
+        <i className="fa-solid fa-chevron-left" onClick={() => decMonth()}></i>
         <h4>{chosenDate.toLocaleString("default", { month: "long" })}</h4>
-        <i class="fa-solid fa-chevron-right" onClick={() => incMonth()}></i>
+        <i className="fa-solid fa-chevron-right" onClick={() => incMonth()}></i>
       </div>
       <div className="container">
         <Total
